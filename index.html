@@ -210,6 +210,15 @@ button,input,select,textarea{font:inherit;color:inherit}
 .readout__d{font-size:var(--t-sm);color:var(--fg-onink-soft);max-width:60ch}
 .readout__hint{font-family:var(--f-mono);font-size:10.5px;color:#6A7373;letter-spacing:.04em}
 
+/* ---------- product photograph ---------- */
+.device__plate{background:linear-gradient(155deg,#FFFFFF,#E9EBE5);border-radius:14px;padding:clamp(10px,1.5vw,18px);box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.07)}
+.device__shot{position:relative;display:block;line-height:0}
+.device__img{display:block;width:100%;height:auto;border-radius:6px}
+.device__traces{position:absolute;left:-7%;top:-5%;width:114%;height:110%;pointer-events:none;opacity:.55;z-index:-1}
+.hot{box-shadow:0 0 0 2px rgba(10,12,13,.45)}
+.shotfig{margin:0}
+.shotfig img{display:block;width:100%;height:auto;border-radius:4px;background:#fff}
+
 /* ---------- panels & grids ---------- */
 .grid{display:grid;gap:1px;background:var(--line)}
 .ink .grid{background:var(--line-ink)}
@@ -528,152 +537,44 @@ details[open] summary{border-bottom:1px solid var(--line)}
       </div>
 
       <figure class="device" id="device" style="margin:0">
+        <svg class="device__traces" viewBox="0 0 720 480" preserveAspectRatio="none" aria-hidden="true">
+          <g fill="none" stroke="#B08A2E" stroke-width="1" opacity=".6">
+            <path class="dash" style="--len:520" d="M14 218 H60 V150 H150"/>
+            <path class="dash" style="--len:560" d="M14 292 H48 V352 H140"/>
+            <path class="dash" style="--len:600" d="M706 150 H660 V96 H560"/>
+            <path class="dash" style="--len:640" d="M706 312 H664 V384 H540"/>
+            <path class="dash" style="--len:420" d="M150 470 V440 H320"/>
+            <path class="dash" style="--len:420" d="M580 470 V440 H430"/>
+          </g>
+          <g fill="#B08A2E" opacity=".75">
+            <circle cx="60" cy="150" r="2.6"/><circle cx="48" cy="352" r="2.6"/>
+            <circle cx="660" cy="96" r="2.6"/><circle cx="664" cy="384" r="2.6"/>
+            <circle cx="150" cy="440" r="2.6"/><circle cx="580" cy="440" r="2.6"/>
+          </g>
+          <g stroke="#1B8562" stroke-width=".8" fill="none" opacity=".5">
+            <path class="dash" style="--len:300" d="M22 86 H86 V54 H200"/>
+            <path class="dash" style="--len:300" d="M698 430 H628 V462 H520"/>
+          </g>
+        </svg>
+
         <div class="device__inner" id="deviceInner">
-          <svg class="device__svg" viewBox="0 0 720 480" role="img" aria-label="Illustration of SmartClone, a handheld electronics repair tool with a display, a ZIF socket, a UART header and an infrared window, surrounded by circuit traces.">
-            <defs>
-              <linearGradient id="gBody" x1="0" y1="0" x2=".6" y2="1">
-                <stop offset="0" stop-color="#2A3133"/><stop offset=".55" stop-color="#1B2122"/><stop offset="1" stop-color="#101415"/>
-              </linearGradient>
-              <linearGradient id="gSheen" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/>
-              </linearGradient>
-              <linearGradient id="gScreen" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#0A1512"/><stop offset="1" stop-color="#061009"/>
-              </linearGradient>
-              <linearGradient id="gZif" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#D3D6CE"/><stop offset="1" stop-color="#A3A79E"/>
-              </linearGradient>
-            </defs>
-
-            <!-- circuit traces behind the device -->
-            <g fill="none" stroke="#B08A2E" stroke-width="1" opacity=".55">
-              <path class="dash" style="--len:520" d="M14 218 H60 V150 H140"/>
-              <path class="dash" style="--len:560" d="M14 262 H48 V330 H128"/>
-              <path class="dash" style="--len:600" d="M706 150 H660 V96 H520"/>
-              <path class="dash" style="--len:640" d="M706 300 H664 V372 H500"/>
-              <path class="dash" style="--len:420" d="M120 466 V430 H300"/>
-              <path class="dash" style="--len:420" d="M600 466 V430 H430"/>
-            </g>
-            <g fill="#B08A2E" opacity=".7">
-              <circle cx="60" cy="150" r="2.6"/><circle cx="48" cy="330" r="2.6"/>
-              <circle cx="660" cy="96" r="2.6"/><circle cx="664" cy="372" r="2.6"/>
-              <circle cx="120" cy="430" r="2.6"/><circle cx="600" cy="430" r="2.6"/>
-            </g>
-            <g stroke="#1B8562" stroke-width=".8" fill="none" opacity=".45">
-              <path class="dash" style="--len:300" d="M22 96 H86 V64 H180"/>
-              <path class="dash" style="--len:300" d="M698 420 H628 V452 H540"/>
-            </g>
-
-            <!-- body -->
-            <rect x="88" y="66" width="544" height="348" rx="18" fill="url(#gBody)" stroke="#39413F"/>
-            <rect x="88" y="66" width="544" height="348" rx="18" fill="url(#gSheen)"/>
-            <rect x="100" y="78" width="520" height="324" rx="12" fill="none" stroke="#2A3234"/>
-
-            <!-- TFT display -->
-            <rect x="120" y="98" width="252" height="170" rx="5" fill="url(#gScreen)" stroke="#3E4644"/>
-            <g font-family="DM Mono, monospace" fill="#4CC79B">
-              <text x="134" y="120" font-size="11">DEV 24C64</text>
-              <text x="286" y="120" font-size="11" fill="#D8AE49">I2C</text>
-              <text x="134" y="252" font-size="10" fill="#7FA394">READ 8192 B</text>
-              <text x="286" y="252" font-size="10" fill="#7FA394">OK</text>
-            </g>
-            <path d="M132 190 h22 l10-34 10 34 h18 l12-52 10 52 h24 l10-18 10 18 h84" fill="none" stroke="#4CC79B" stroke-width="1.6" class="dash" style="--len:340"/>
-            <g stroke="#213029" stroke-width=".6">
-              <path d="M120 156 H372"/><path d="M120 224 H372"/><path d="M246 98 V268"/>
-            </g>
-            <rect x="132" y="204" width="228" height="6" fill="#16241D"/>
-            <rect x="132" y="204" width="150" height="6" fill="#1B8562" class="blink"/>
-
-            <!-- ZIF socket -->
-            <rect x="398" y="98" width="200" height="122" rx="4" fill="url(#gZif)" stroke="#8C9089"/>
-            <rect x="412" y="112" width="150" height="94" rx="2" fill="#8E938B"/>
-            <g fill="#2A2E2B">
-              <rect x="420" y="124" width="134" height="5"/><rect x="420" y="136" width="134" height="5"/>
-              <rect x="420" y="148" width="134" height="5"/><rect x="420" y="160" width="134" height="5"/>
-              <rect x="420" y="172" width="134" height="5"/><rect x="420" y="184" width="134" height="5"/>
-            </g>
-            <path d="M574 116 v88" stroke="#5F635D" stroke-width="7" stroke-linecap="round"/>
-            <path d="M574 116 l16 -22" stroke="#5F635D" stroke-width="6" stroke-linecap="round"/>
-            <text x="398" y="238" font-family="DM Mono, monospace" font-size="10" fill="#7B837F">ZIF / CLIP INTERFACE</text>
-
-            <!-- processing core -->
-            <rect x="398" y="254" width="104" height="66" rx="2" fill="#0C1011" stroke="#3A4244"/>
-            <g stroke="#4A5250" stroke-width="1.4">
-              <path d="M398 268 h-14M398 282 h-14M398 296 h-14M398 310 h-14"/>
-              <path d="M502 268 h14M502 282 h14M502 296 h14M502 310 h14"/>
-            </g>
-            <text x="410" y="292" font-family="DM Mono, monospace" font-size="10" fill="#8E9797">CORE</text>
-            <circle cx="410" cy="264" r="2" fill="#D8AE49"/>
-
-            <!-- keypad -->
-            <g fill="#242A2B" stroke="#3A4244">
-              <rect x="120" y="292" width="56" height="34" rx="3"/>
-              <rect x="186" y="292" width="56" height="34" rx="3"/>
-              <rect x="252" y="292" width="56" height="34" rx="3"/>
-              <rect x="318" y="292" width="56" height="34" rx="3"/>
-            </g>
-            <g font-family="DM Mono, monospace" font-size="9" fill="#7B837F" text-anchor="middle">
-              <text x="148" y="313">MENU</text><text x="214" y="313">READ</text>
-              <text x="280" y="313">WRITE</text><text x="346" y="313">OK</text>
-            </g>
-
-            <!-- encoder -->
-            <circle cx="552" cy="352" r="34" fill="#202627" stroke="#3A4244"/>
-            <circle cx="552" cy="352" r="21" fill="#171C1D" stroke="#2F3637"/>
-            <g stroke="#4A5250" stroke-width="1.2">
-              <path d="M552 322 v6M552 376 v6M522 352 h6M576 352 h6"/>
-            </g>
-
-            <!-- UART header -->
-            <g>
-              <rect x="120" y="342" width="92" height="26" rx="2" fill="#0C1011" stroke="#3A4244"/>
-              <g fill="#D8AE49">
-                <rect x="130" y="350" width="8" height="10"/><rect x="150" y="350" width="8" height="10"/>
-                <rect x="170" y="350" width="8" height="10"/><rect x="190" y="350" width="8" height="10"/>
-              </g>
-              <g font-family="DM Mono, monospace" font-size="8" fill="#7B837F" text-anchor="middle">
-                <text x="134" y="382">TX</text><text x="154" y="382">RX</text><text x="174" y="382">G</text><text x="194" y="382">V</text>
-              </g>
-            </g>
-
-            <!-- IR window -->
-            <rect x="614" y="248" width="18" height="52" rx="6" fill="#2A1210" stroke="#4A2320"/>
-            <g fill="none" stroke="#BF3A2B" stroke-width="1.4" opacity=".8" class="blink">
-              <path d="M640 258 a26 26 0 0 1 0 32"/>
-              <path d="M652 250 a40 40 0 0 1 0 48"/>
-              <path d="M664 242 a54 54 0 0 1 0 64"/>
-            </g>
-
-            <!-- USB-C -->
-            <rect x="82" y="196" width="12" height="40" rx="6" fill="#0A0D0E" stroke="#3A4244"/>
-
-            <!-- status LEDs -->
-            <g>
-              <circle cx="566" cy="88" r="3.4" fill="#1B8562" class="blink"/>
-              <circle cx="580" cy="88" r="3.4" fill="#D8AE49"/>
-              <circle cx="594" cy="88" r="3.4" fill="#3A4244"/>
-            </g>
-
-            <!-- silkscreen -->
-            <text x="530" y="398" font-family="Familjen Grotesk, sans-serif" font-weight="700" font-size="15" fill="#71797A" text-anchor="end">EDIO</text>
-            <text x="620" y="398" font-family="DM Mono, monospace" font-size="10" fill="#5B6365" text-anchor="end">SMARTCLONE  SC—1</text>
-            <g stroke="#3A4244" stroke-width="1">
-              <path d="M104 82 h8M108 78 v8"/><path d="M608 398 h8M612 394 v8"/>
-            </g>
-          </svg>
-
-          <button class="hot" data-hot="display" style="left:34.2%;top:38.1%" aria-pressed="true" aria-label="Display and interface"></button>
-          <button class="hot" data-hot="socket" style="left:69.2%;top:33.1%" aria-pressed="false" aria-label="Socket and memory operations"></button>
-          <button class="hot" data-hot="core" style="left:62.5%;top:59.8%" aria-pressed="false" aria-label="Standalone processing core"></button>
-          <button class="hot" data-hot="uart" style="left:22.6%;top:74.2%" aria-pressed="false" aria-label="UART header"></button>
-          <button class="hot" data-hot="ir" style="left:87.6%;top:57.1%" aria-pressed="false" aria-label="Infrared window"></button>
-          <button class="hot" data-hot="usb" style="left:12.2%;top:45%" aria-pressed="false" aria-label="Host and power port"></button>
+          <div class="device__plate">
+            <span class="device__shot">
+              <img class="device__img" src="smartclone.jpg" width="1200" height="896" decoding="async"
+                   alt="EDIO SmartClone, a standalone television repair tool, showing its display, EEPROM and flash socket, infrared receiver, status indicators and navigation keys.">
+              <button class="hot" data-hot="display" style="left:47.2%;top:51.5%" aria-pressed="true" aria-label="Display"></button>
+              <button class="hot" data-hot="socket" style="left:19.3%;top:54.7%" aria-pressed="false" aria-label="EEPROM and flash socket"></button>
+              <button class="hot" data-hot="ir" style="left:82%;top:35.6%" aria-pressed="false" aria-label="Infrared receiver"></button>
+              <button class="hot" data-hot="status" style="left:74%;top:56.5%" aria-pressed="false" aria-label="Status indicators"></button>
+              <button class="hot" data-hot="keys" style="left:49.6%;top:83.6%" aria-pressed="false" aria-label="Navigation keys"></button>
+            </span>
+          </div>
         </div>
 
         <figcaption class="readout" id="readout" style="margin-top:22px">
           <span class="readout__k" id="roK">DISPLAY</span>
           <span class="readout__t" id="roT">On-device interface</span>
-          <span class="readout__d" id="roD">Workflows, memory contents and diagnostic output are shown on the device itself, so the tool can be used without a computer at the bench.</span>
+          <span class="readout__d" id="roD">Workflows, memory contents and diagnostic output appear on the device itself, so SmartClone can be used without a computer at the bench.</span>
           <span class="readout__hint">Select a marker on the device. Drag the device to change the view.</span>
         </figcaption>
       </figure>
@@ -1158,6 +1059,25 @@ details[open] summary{border-bottom:1px solid var(--line)}
     </div>
   </div>
 
+  <!-- the hardware -->
+  <div class="sheet sec">
+    <div class="sheet__rail" aria-hidden="true"><div class="rail__id">HARDWARE</div></div>
+    <div class="sheet__body">
+      <div class="two">
+        <figure class="fig shotfig">
+          <img src="smartclone.jpg" width="1200" height="896" loading="lazy" decoding="async"
+               alt="SmartClone front panel: EEPROM and flash socket with ISP port, display, infrared receiver, status indicators and three navigation keys.">
+          <figcaption>SmartClone — display, EEPROM and flash socket with ISP port, infrared receiver, status indicators and three navigation keys.</figcaption>
+        </figure>
+        <figure class="fig shotfig">
+          <img src="smartclone-kit.jpg" width="1100" height="1019" loading="lazy" decoding="async"
+               alt="SmartClone with its adapters, interface boards, ribbon cables and USB leads laid out.">
+          <figcaption>The tool with adapters, interface boards and cables. Contents vary by configuration.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
   <!-- overview -->
   <div class="sheet sec">
     <div class="sheet__rail" aria-hidden="true"><div class="rail__id">OVERVIEW</div></div>
@@ -1314,7 +1234,7 @@ details[open] summary{border-bottom:1px solid var(--line)}
               <tr><th style="color:#8E9797">Supply voltage</th><td style="color:var(--line-strong)">Pending publication</td></tr>
               <tr><th style="color:#8E9797">Dimensions</th><td style="color:var(--line-strong)">Pending publication</td></tr>
               <tr><th style="color:#8E9797">Mass</th><td style="color:var(--line-strong)">Pending publication</td></tr>
-              <tr><th style="color:#8E9797">In the box</th><td style="color:var(--line-strong)">Pending publication</td></tr>
+              <tr><th style="color:#8E9797">Supplied with</th><td style="color:#fff">Adapters, interface boards and cables — varies by configuration</td></tr>
             </tbody>
           </table>
         </div>
@@ -2186,18 +2106,16 @@ function countUp(el){
    SMARTCLONE HOTSPOTS + DRAG TO ROTATE
    ============================================================ */
 const HOT = {
-  display:{k:"DISPLAY / TFT", t:"On-device interface",
-    d:"Workflows, memory contents and diagnostic output are shown on the device itself, so the tool can be used without a computer at the bench."},
-  socket:{k:"ZIF / EEPROM", t:"Memory operations",
-    d:"Read, write, edit, store and clone supported memory data. The ZIF and clip interface holds the device while it is read, and the original contents are kept before anything is written."},
-  core:{k:"CORE / I²C", t:"Standalone processing",
-    d:"The processor runs complete workflows on the device and drives the I²C bus for identification and memory access on supported targets."},
-  uart:{k:"UART", t:"Serial interface",
-    d:"Direct communication with supported electronic systems for diagnostic and programming workflows, over a TX, RX, ground and supply header."},
-  ir:{k:"INFRARED", t:"Wireless interface",
-    d:"Wireless communication interface for supported repair workflows, where a wired header is unavailable or unsafe to reach."},
-  usb:{k:"USB / HOST", t:"Host and power",
-    d:"Power, firmware updates and transfer of stored memory images. SmartClone does not need a host computer to perform a repair."}
+  display:{k:"DISPLAY", t:"On-device interface",
+    d:"Workflows, memory contents and diagnostic output appear on the device itself, so SmartClone can be used without a computer at the bench."},
+  socket:{k:"EEPROM / FLASH", t:"Memory socket and ISP port",
+    d:"The ZIF socket holds a supported memory device for read, write, edit, store and clone operations. The ISP port connects to supported boards in place."},
+  ir:{k:"IR RECEIVER", t:"Infrared interface",
+    d:"Wireless communication interface for supported repair workflows, where a wired connection is unavailable or unsafe to reach."},
+  status:{k:"STATUS", t:"Power, busy, ready",
+    d:"The state of the current operation at a glance — useful when a read or write is running and the bench is busy."},
+  keys:{k:"KEYS", t:"Navigation",
+    d:"Back, exit and forward move through workflows on the device. Three keys, no host computer, usable with one hand."}
 };
 $$(".hot").forEach(b=>{
   b.addEventListener("click", ()=>{
